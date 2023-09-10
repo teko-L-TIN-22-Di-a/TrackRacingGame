@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/concrete_tex.png-5ab19ccb99449d805d2094a048e4d343.s3tc.stex"
-path.etc2="res://.import/concrete_tex.png-5ab19ccb99449d805d2094a048e4d343.etc2.stex"
+path.s3tc="res://.import/concrete_tex.png-df23a9d65f1f40d3c324cc9731bf5cbe.s3tc.stex"
+path.etc2="res://.import/concrete_tex.png-df23a9d65f1f40d3c324cc9731bf5cbe.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://src/scenes/Track/concrete_tex.png"
-dest_files=[ "res://.import/concrete_tex.png-5ab19ccb99449d805d2094a048e4d343.s3tc.stex", "res://.import/concrete_tex.png-5ab19ccb99449d805d2094a048e4d343.etc2.stex" ]
+source_file="res://src/scenes/track/concrete_tex.png"
+dest_files=[ "res://.import/concrete_tex.png-df23a9d65f1f40d3c324cc9731bf5cbe.s3tc.stex", "res://.import/concrete_tex.png-df23a9d65f1f40d3c324cc9731bf5cbe.etc2.stex" ]
 
 [params]
 

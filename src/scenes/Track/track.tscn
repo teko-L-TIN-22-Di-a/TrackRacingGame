@@ -1,9 +1,10 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://src/scenes/Track/track.gd" type="Script" id=1]
 [ext_resource path="res://Map1.png" type="Texture" id=2]
 [ext_resource path="res://src/scenes/Track/HUD.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/assets/concrete_hd/concrete.tres" type="Material" id=4]
+[ext_resource path="res://src/scenes/player/player.tscn" type="PackedScene" id=5]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 200, 1, 200 )
@@ -11,8 +12,52 @@ extents = Vector3( 200, 1, 200 )
 [sub_resource type="PlaneMesh" id=6]
 size = Vector2( 200, 200 )
 
-[sub_resource type="SpatialMaterial" id=3]
-albedo_texture = ExtResource( 2 )
+[sub_resource type="Shader" id=31]
+code = "// NOTE: Shader automatically converted from Godot Engine 3.5.2.stable's SpatialMaterial.
+
+shader_type spatial;
+render_mode async_visible,blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : hint_color;
+uniform sampler2D texture_albedo : hint_albedo;
+uniform float specular;
+uniform float metallic;
+uniform float roughness : hint_range(0,1);
+uniform float point_size : hint_range(0,128);
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+}
+
+
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	METALLIC = metallic;
+	ROUGHNESS = roughness;
+	SPECULAR = specular;
+}
+"
+
+[sub_resource type="ShaderMaterial" id=32]
+shader = SubResource( 31 )
+shader_param/albedo = Color( 1, 1, 1, 1 )
+shader_param/specular = 0.5
+shader_param/metallic = 0.0
+shader_param/roughness = 1.0
+shader_param/point_size = 1.0
+shader_param/uv1_scale = Vector3( 1, 1, 1 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/uv2_scale = Vector3( 1, 1, 1 )
+shader_param/uv2_offset = Vector3( 0, 0, 0 )
+shader_param/texture_albedo = ExtResource( 2 )
 
 [sub_resource type="ProceduralSky" id=4]
 sky_top_color = Color( 0.00784314, 0.0117647, 0.14902, 1 )
@@ -45,11 +90,10 @@ material = ExtResource( 4 )
 size = Vector3( 1.6, 1, 185 )
 
 [sub_resource type="BoxShape" id=11]
-extents = Vector3( 37, 1, 3.2 )
 
 [sub_resource type="CubeMesh" id=12]
 material = ExtResource( 4 )
-size = Vector3( 36.1, 1, 3 )
+size = Vector3( 1, 1, 3 )
 
 [sub_resource type="BoxShape" id=13]
 extents = Vector3( 3.6, 1, 12 )
@@ -126,7 +170,7 @@ shape = SubResource( 1 )
 [node name="MeshInstance" type="MeshInstance" parent="Ground"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.76801 )
 mesh = SubResource( 6 )
-material/0 = SubResource( 3 )
+material/0 = SubResource( 32 )
 
 [node name="ScoreTimer" type="Timer" parent="."]
 one_shot = true
@@ -145,10 +189,6 @@ transform = Transform( -0.927721, 0.210717, 0.30811, 0.311932, -0.0157096, 0.949
 light_color = Color( 0.305882, 0.298039, 0.278431, 1 )
 light_energy = 8.07
 light_indirect_energy = 11.157
-
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.9179, 0.396811, 0, -0.396811, 0.9179, -0.00313187, 3.51856, 0.00207329 )
-fov = 62.8269
 
 [node name="BorderTop" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -83.1151 )
@@ -191,7 +231,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0630951, 0, 11.0197 )
 mesh = SubResource( 10 )
 
 [node name="WallMiddle" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.791, 0, 0.446637 )
+transform = Transform( 36, 0, 0, 0, 1, 0, 0, 0, 1, 17.791, 0, 0.446637 )
 
 [node name="CollisionShape" type="CollisionShape" parent="WallMiddle"]
 shape = SubResource( 11 )
@@ -287,7 +327,7 @@ shape = SubResource( 25 )
 mesh = SubResource( 26 )
 
 [node name="SmallHWall" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5221, 0, 45.3267 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5028, -0.00251126, 45.6423 )
 
 [node name="CollisionShape" type="CollisionShape" parent="SmallHWall"]
 shape = SubResource( 29 )
@@ -295,6 +335,9 @@ shape = SubResource( 29 )
 [node name="MeshInstance" type="MeshInstance" parent="SmallHWall"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519101, 0, -0.0865173 )
 mesh = SubResource( 30 )
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.62205, 14.4726 )
 
 [connection signal="gameplay_entered" from="." to="." method="_on_Spatial_gameplay_entered"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
