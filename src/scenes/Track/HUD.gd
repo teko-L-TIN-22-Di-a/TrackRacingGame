@@ -35,6 +35,7 @@ func _on_StartButton_pressed():
 	emit_signal("start_game")
 
 func _physics_process(delta):
+	return
 	if seconds > 0 and dsec <= 0:
 		seconds -=1
 		dsec = 10

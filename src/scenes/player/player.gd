@@ -22,6 +22,7 @@ export var max_speed: float = 20
 export var max_reverse_speed: float = 5
 
 onready var body: KinematicBody = $'KinematicBody'
+onready var sprite: AnimatedSprite3D = $'KinematicBody/AnimatedSprite3D'
 onready var state_handler: StateHandler = $'KinematicBody/StateHandler'
 onready var camera: Camera = $'Camera'
 
@@ -33,6 +34,7 @@ var drifting = false
 func _process(delta: float):
 	
 	animate_camera(delta)
+	animate_sprite(delta)
 	
 	state_handler.process(delta)
 	
@@ -43,6 +45,17 @@ func _process(delta: float):
 	velocity += acceleration * delta
 	
 	velocity = body.move_and_slide_with_snap(velocity, -body.transform.basis.y, Vector3.UP, false)
+	
+func animate_sprite(delta: float) -> void:
+	sprite.flip_h = false
+	
+	if (Input.is_action_pressed("turn_left")):
+		sprite.flip_h = true
+		sprite.play("turn_right")
+	elif (Input.is_action_pressed("turn_right")):
+		sprite.play("turn_right")
+	else:
+		sprite.play("default")
 	
 func animate_camera(delta: float) -> void:
 	var is_moving = state_handler.state.name in ["Moving", "Air"]
