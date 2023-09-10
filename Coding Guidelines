@@ -1,0 +1,7 @@
+Coding Guidelines
+-----------------
+folder names: snake_case
+file names: snake_case
+class names: PascalCase
+node names: PascalCase
+third-party resources: keept in top-level addons/ folder
