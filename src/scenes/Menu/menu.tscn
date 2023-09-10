@@ -6,7 +6,7 @@
 [node name="Control" type="Control"]
 script = ExtResource( 2 )
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Bild" type="TextureRect" parent="."]
 margin_right = 1024.0
 margin_bottom = 600.0
 rect_clip_content = true
@@ -48,7 +48,7 @@ margin_right = 114.0
 margin_bottom = 94.0
 rect_min_size = Vector2( 20, 50 )
 
-[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer2"]
+[node name="StartButton" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer2"]
 margin_top = 5.0
 margin_right = 114.0
 margin_bottom = 45.0
@@ -67,7 +67,7 @@ margin_right = 114.0
 margin_bottom = 140.0
 rect_min_size = Vector2( 0, 42 )
 
-[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer"]
+[node name="EndButton" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer"]
 margin_top = 1.0
 margin_right = 114.0
 margin_bottom = 41.0
@@ -78,5 +78,5 @@ custom_colors/font_color = Color( 0.513726, 1, 0.901961, 1 )
 custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 text = "Quit"
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer2/Button2" to="." method="_on_Button2_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer2/StartButton" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer/EndButton" to="." method="_on_Button_pressed"]

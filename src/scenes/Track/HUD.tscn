@@ -2,7 +2,7 @@
 
 [ext_resource path="res://src/scenes/Track/HUD.gd" type="Script" id=1]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="HUB" type="CanvasLayer"]
 script = ExtResource( 1 )
 minutes = 5
 

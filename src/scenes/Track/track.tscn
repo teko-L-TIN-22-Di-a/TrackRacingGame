@@ -129,12 +129,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.76801 )
 mesh = SubResource( 6 )
 material/0 = SubResource( 3 )
 
-[node name="ScoreTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="StartTimer" type="Timer" parent="."]
-wait_time = 2.0
-
 [node name="StartPosition" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.738426, 0 )
 
@@ -301,7 +295,8 @@ shape = SubResource( 29 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519101, 0, -0.0865173 )
 mesh = SubResource( 30 )
 
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 0.1
+
 [connection signal="gameplay_entered" from="." to="." method="_on_Spatial_gameplay_entered"]
-[connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
-[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
 [connection signal="gameplay_entered" from="StartPosition" to="." method="_on_StartPosition_gameplay_entered"]
