@@ -4,32 +4,62 @@
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource( 1 )
+minutes = 5
 
 [node name="Control" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="ScoreLabel" type="Label" parent="Control"]
-margin_left = 27.0
-margin_right = 67.0
-margin_bottom = 14.0
-text = "0"
-
 [node name="Message" type="Label" parent="Control"]
-margin_left = 11.0
-margin_top = 24.0
-margin_right = 55.0
-margin_bottom = 38.0
+margin_left = 495.0
+margin_top = 30.0
+margin_right = 539.0
+margin_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Ready?"
 
 [node name="StartButton" type="Button" parent="Control"]
-margin_left = 12.0
-margin_top = 50.0
-margin_right = 53.0
-margin_bottom = 70.0
+margin_left = 496.0
+margin_top = 56.0
+margin_right = 537.0
+margin_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Start"
 
-[node name="MessageTimer" type="Timer" parent="Control"]
+[node name="GameTimer" type="Timer" parent="Control"]
+
+[node name="min" type="RichTextLabel" parent="Control"]
+margin_left = 493.0
+margin_top = 6.0
+margin_right = 533.0
+margin_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "00"
+
+[node name="sec" type="RichTextLabel" parent="Control"]
+margin_left = 512.0
+margin_top = 6.0
+margin_right = 552.0
+margin_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "00"
+
+[node name="dsec" type="RichTextLabel" parent="Control"]
+margin_left = 532.0
+margin_top = 6.0
+margin_right = 572.0
+margin_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+
+[node name="Timer" type="Timer" parent="Control"]
+process_mode = 0
+wait_time = 0.1
 
 [connection signal="pressed" from="Control/StartButton" to="." method="_on_StartButton_pressed"]
-[connection signal="timeout" from="Control/MessageTimer" to="." method="_on_MessageTimer_timeout"]
+[connection signal="timeout" from="Control/GameTimer" to="." method="_on_MessageTimer_timeout"]
