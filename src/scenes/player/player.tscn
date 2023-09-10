@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/scenes/player/player.gd" type="Script" id=1]
 [ext_resource path="res://src/assets/toad.png" type="Texture" id=2]
@@ -13,9 +13,29 @@ height = 1.0
 radius = 0.5
 
 [sub_resource type="AtlasTexture" id=4]
-flags = 16
+flags = 19
 atlas = ExtResource( 2 )
 region = Rect2( 0, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 19
+atlas = ExtResource( 2 )
+region = Rect2( 0, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 19
+atlas = ExtResource( 2 )
+region = Rect2( 32, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 19
+atlas = ExtResource( 2 )
+region = Rect2( 64, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 19
+atlas = ExtResource( 2 )
+region = Rect2( 96, 32, 32, 32 )
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
@@ -23,6 +43,11 @@ animations = [ {
 "loop": true,
 "name": "default",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"loop": false,
+"name": "turn_right",
+"speed": 10.0
 } ]
 
 [node name="Player" type="Spatial"]
@@ -48,6 +73,7 @@ script = ExtResource( 6 )
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="KinematicBody"]
 pixel_size = 0.031
+billboard = 1
 frames = SubResource( 5 )
 
 [node name="Camera" type="Camera" parent="."]
@@ -55,7 +81,7 @@ transform = Transform( 1, 0, 0, 0, 0.99988, -0.0155157, 0, 0.0155157, 0.99988, 0
 current = true
 script = ExtResource( 7 )
 target_path = NodePath("../KinematicBody")
-vertical_distance = 4.7
-height = 3.0
-over_player = -1.0
-fixed_angle = 0.4
+horizontal_distance = 2.0
+height = 2.0
+target_y_offset = 1.0
+fixed_angle = 0.167
