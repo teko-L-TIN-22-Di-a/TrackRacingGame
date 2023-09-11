@@ -74,6 +74,7 @@ script = ExtResource( 6 )
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="KinematicBody"]
 pixel_size = 0.031
 billboard = 1
+shaded = true
 frames = SubResource( 5 )
 
 [node name="Camera" type="Camera" parent="."]
@@ -81,7 +82,5 @@ transform = Transform( 1, 0, 0, 0, 0.99988, -0.0155157, 0, 0.0155157, 0.99988, 0
 current = true
 script = ExtResource( 7 )
 target_path = NodePath("../KinematicBody")
-horizontal_distance = 2.0
 height = 2.0
-target_y_offset = 1.0
 fixed_angle = 0.167

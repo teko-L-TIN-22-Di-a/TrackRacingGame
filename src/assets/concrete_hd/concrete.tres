@@ -5,8 +5,10 @@
 
 [resource]
 resource_name = "concrete"
+params_point_size = 0.1
 albedo_color = Color( 0.78125, 0.78125, 0.78125, 1 )
-metallic = 0.2
+metallic = 0.41
+metallic_specular = 0.0
 metallic_texture_channel = 4
 roughness = 0.26
 roughness_texture = ExtResource( 2 )
@@ -22,6 +24,6 @@ depth_flip_tangent = false
 depth_flip_binormal = false
 subsurf_scatter_enabled = true
 subsurf_scatter_strength = 0.1
-uv1_scale = Vector3( 0.25, 0.25, 0.25 )
+uv1_scale = Vector3( 0.05, 0.05, 0.05 )
 uv1_triplanar = true
 uv1_triplanar_sharpness = 2.07053
