@@ -2,21 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Map1.png-e515d37153165879a6f79fd922d6be89.s3tc.stex"
-path.etc2="res://.import/Map1.png-e515d37153165879a6f79fd922d6be89.etc2.stex"
+path="res://.import/Map1.png-e515d37153165879a6f79fd922d6be89.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://src/assets/Map1.png"
-dest_files=[ "res://.import/Map1.png-e515d37153165879a6f79fd922d6be89.s3tc.stex", "res://.import/Map1.png-e515d37153165879a6f79fd922d6be89.etc2.stex" ]
+dest_files=[ "res://.import/Map1.png-e515d37153165879a6f79fd922d6be89.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/assets/hiep-duong-uDvcxeACIV0-unsplash.jpg" type="Texture" id=1]
-[ext_resource path="res://src/scenes/Menu/menu.gd" type="Script" id=2]
+[ext_resource path="res://src/scenes/menu/menu.gd" type="Script" id=2]
 
 [node name="Control" type="Control"]
 script = ExtResource( 2 )

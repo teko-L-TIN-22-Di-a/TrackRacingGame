@@ -31,12 +31,21 @@ var acceleration = Vector3.ZERO
 var current_steering: float = 0
 var drifting = false
 
+var enabled = false
+
+func enable():
+	enabled = true
+	
+func disable():
+	enabled = false
+
 func _process(delta: float):
 	
 	animate_camera(delta)
 	animate_sprite(delta)
 	
-	state_handler.process(delta)
+	if(enabled):
+		state_handler.process(delta)
 	
 	apply_friction(delta)
 	calculate_steering(delta)
